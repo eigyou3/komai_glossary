@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>住宅建築 用語手引書 | こまいホーム</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1208;
+  --ink-light: #4a3f2f;
+  --paper: #faf7f2;
+  --paper-dark: #f0ead8;
+  --accent: #8b4513;
+  --accent-light: #c4813a;
+  --accent-pale: #f5e6d3;
+  --line: #d4c4a8;
+  --green: #3d6b3a;
+  --green-pale: #e8f2e6;
+  --blue: #1e5270;
+  --blue-pale: #e0edf5;
+  --gold: #9a7000;
+  --gold-pale: #fef8e0;
+  --purple: #6b3d7a;
+  --purple-pale: #f2e8f5;
+  --sage: #4a6240;
+  --sage-pale: #eaf0e8;
+  --shadow-sm: 0 2px 8px rgba(60,30,10,0.07);
+  --shadow-md: 0 6px 24px rgba(60,30,10,0.12);
+  --shadow-lg: 0 16px 48px rgba(60,30,10,0.18);
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  padding-top: 64px; /* sticky nav height */
+}
+
+/* ═══════════════════════════════════════
+   STICKY NAV
+═══════════════════════════════════════ */
+.sticky-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  background: rgba(250,247,242,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  gap: 16px;
+}
+
+.nav-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-title span {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ink-light);
+  margin-left: 8px;
+  letter-spacing: 0.05em;
+}
+
+.nav-ask-btn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-size: 13px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 3px 12px rgba(139,69,19,0.35);
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.nav-ask-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 18px rgba(139,69,19,0.45);
+}
+
+.nav-ask-btn svg { flex-shrink: 0; }
+
+/* ═══════════════════════════════════════
+   MAIN CONTAINER
+═══════════════════════════════════════ */
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+/* ═══════════════════════════════════════
+   HEADER
+═══════════════════════════════════════ */
+header {
+  padding: 48px 0 36px;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, var(--accent), var(--accent-light), transparent) 1;
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-bg-deco {
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  font-size: 130px;
+  opacity: 0.04;
+  font-family: 'Noto Serif JP', serif;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.header-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+header h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+}
+
+header h1 em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-sub {
+  font-size: 12px;
+  color: var(--ink-light);
+  letter-spacing: 0.2em;
+  margin-top: 8px;
+  font-weight: 300;
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--ink-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-badge strong { color: var(--accent); font-weight: 600; }
+
+/* ═══════════════════════════════════════
+   CONTROLS
+═══════════════════════════════════════ */
+.controls {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.search-wrap {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--line);
+  pointer-events: none;
+  display: flex;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  transition: all 0.2s;
+  outline: none;
+}
+
+#searchInput:focus {
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 3px var(--accent-pale);
+}
+
+#searchInput::placeholder { color: var(--line); }
+
+.filter-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--ink-light);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.filter-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  background: transparent;
+  font-size: 12px;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.filter-btn:hover { border-color: var(--accent-light); color: var(--accent); }
+
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(139,69,19,0.3);
+}
+
+/* ═══════════════════════════════════════
+   RESULT COUNT
+═══════════════════════════════════════ */
+.result-count {
+  font-size: 13px;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  padding-left: 2px;
+}
+.result-count strong { color: var(--accent); }
+
+/* ═══════════════════════════════════════
+   TERM CARDS
+═══════════════════════════════════════ */
+.glossary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.term-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--line);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px 22px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.term-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 -4px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  pointer-events: none;
+}
+
+.term-card:hover {
+  transform: translateX(3px);
+  box-shadow: var(--shadow-md);
+}
+
+.term-card.cat-構造  { border-left-color: var(--accent); }
+.term-card.cat-仕上げ { border-left-color: var(--blue); }
+.term-card.cat-設備  { border-left-color: var(--green); }
+.term-card.cat-法規  { border-left-color: var(--gold); }
+.term-card.cat-業務  { border-left-color: var(--purple); }
+.term-card.cat-工程  { border-left-color: var(--sage); }
+
+.term-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.term-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.term-ruby {
+  display: block;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ink-light);
+  letter-spacing: 0.08em;
+  margin-top: 3px;
+}
+
+.badges-wrap {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cat-badge {
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.cat-badge.cat-構造  { background: var(--accent-pale); color: var(--accent); }
+.cat-badge.cat-仕上げ { background: var(--blue-pale); color: var(--blue); }
+.cat-badge.cat-設備  { background: var(--green-pale); color: var(--green); }
+.cat-badge.cat-法規  { background: var(--gold-pale); color: var(--gold); }
+.cat-badge.cat-業務  { background: var(--purple-pale); color: var(--purple); }
+.cat-badge.cat-工程  { background: var(--sage-pale); color: var(--sage); }
+
+.term-body {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink-light);
+}
+
+.term-example {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--paper);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--ink-light);
+  border-left: 3px solid var(--accent-pale);
+}
+
+.term-example::before {
+  content: '使用例｜';
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+/* 用語内リンク */
+.term-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  font-weight: 400;
+  transition: color 0.15s;
+  padding: 0 1px;
+}
+.term-link:hover { color: var(--accent-light); }
+
+/* ハイライト */
+@keyframes highlight-in {
+  0%   { background: var(--accent-pale); box-shadow: 0 0 0 4px var(--accent-pale); }
+  70%  { background: var(--accent-pale); box-shadow: 0 0 0 4px var(--accent-pale); }
+  100% { background: white; box-shadow: none; }
+}
+.term-card.highlighted {
+  animation: highlight-in 1.8s ease-out forwards;
+}
+
+/* 空状態 */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-light);
+  display: none;
+}
+.empty-state .emoji { font-size: 40px; margin-bottom: 12px; }
+.empty-state p { font-size: 14px; line-height: 1.8; }
+
+/* フッター */
+footer {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--line);
+  text-align: center;
+  letter-spacing: 0.12em;
+}
+
+/* ═══════════════════════════════════════
+   MODAL BASE
+═══════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20,10,5,0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  background: white;
+  border-radius: 16px;
+  padding: 36px 32px 32px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  transform: scale(0.88) translateY(16px);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
+  opacity: 0;
+  position: relative;
+}
+
+.modal-overlay.open .modal-box {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 32px; height: 32px;
+  border: none;
+  background: var(--paper);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-light);
+  font-size: 18px;
+  transition: background 0.15s;
+  line-height: 1;
+}
+.modal-close:hover { background: var(--paper-dark); }
+
+/* ═══════════════════════════════════════
+   NOTICE MODAL (初回)
+═══════════════════════════════════════ */
+#noticeModal .modal-box {
+  max-width: 440px;
+}
+
+.notice-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--accent-pale), var(--paper-dark));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+
+.notice-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.notice-body {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink-light);
+  margin-bottom: 24px;
+}
+
+.notice-body strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.notice-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(139,69,19,0.35);
+  transition: all 0.2s;
+}
+.notice-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(139,69,19,0.45); }
+
+/* ═══════════════════════════════════════
+   TERM DETAIL MODAL (用語詳細)
+═══════════════════════════════════════ */
+#termModal .modal-box {
+  max-width: 520px;
+}
+
+.term-modal-cats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.term-modal-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.term-modal-ruby {
+  font-size: 12px;
+  color: var(--ink-light);
+  letter-spacing: 0.1em;
+  margin-bottom: 18px;
+}
+
+.term-modal-divider {
+  height: 1px;
+  background: var(--line);
+  margin-bottom: 18px;
+  opacity: 0.5;
+}
+
+.term-modal-desc {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--ink-light);
+  margin-bottom: 16px;
+}
+
+.term-modal-example {
+  padding: 12px 16px;
+  background: var(--paper);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--ink-light);
+  border-left: 3px solid var(--accent-pale);
+  margin-bottom: 20px;
+}
+
+.term-modal-example::before {
+  content: '使用例｜';
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+.term-modal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: white;
+  font-size: 13px;
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.term-modal-back:hover { border-color: var(--accent); color: var(--accent); }
+
+/* モーダル内の用語リンク */
+.term-modal-desc .term-link { color: var(--accent); }
+
+/* ═══════════════════════════════════════
+   ASK MODAL (質問フォーム)
+═══════════════════════════════════════ */
+#askModal .modal-box { max-width: 460px; }
+
+.ask-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.ask-sub {
+  font-size: 13px;
+  color: var(--ink-light);
+  margin-bottom: 22px;
+  line-height: 1.7;
+}
+
+.ask-field {
+  margin-bottom: 16px;
+}
+
+.ask-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--ink-light);
+  margin-bottom: 7px;
+  font-weight: 400;
+}
+
+.ask-label span {
+  color: var(--accent);
+  margin-left: 4px;
+}
+
+.ask-input, .ask-textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  transition: all 0.2s;
+  outline: none;
+  font-weight: 300;
+}
+
+.ask-input:focus, .ask-textarea:focus {
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 3px var(--accent-pale);
+}
+
+.ask-textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.7;
+}
+
+.ask-send-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(139,69,19,0.35);
+  transition: all 0.2s;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.ask-send-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(139,69,19,0.45); }
+.ask-send-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.ask-status {
+  margin-top: 12px;
+  font-size: 13px;
+  text-align: center;
+  min-height: 20px;
+  color: var(--green);
+  display: none;
+}
+.ask-status.error { color: #c0392b; }
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 600px) {
+  .sticky-nav { padding: 0 16px; }
+  .nav-title span { display: none; }
+  header { padding: 32px 0 28px; }
+  .modal-box { padding: 28px 22px 24px; }
+  .term-modal-name { font-size: 20px; }
+  .term-card { padding: 16px 18px; }
+  .term-name { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ STICKY NAV ════════════ -->
+<nav class="sticky-nav">
+  <div class="nav-title">
+    住宅建築 用語手引書
+    <span>こまいホーム</span>
+  </div>
+  <button class="nav-ask-btn" onclick="openModal('askModal')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    詳しく知りたい
+  </button>
+</nav>
+
+<!-- ════════════ MAIN ════════════ -->
+<div class="container">
+  <header>
+    <div class="header-bg-deco">繋</div>
+    <div class="header-label">新人研修資料</div>
+    <h1><em>住宅建築</em> 用語手引書</h1>
+    <div class="header-sub">Housing Construction Glossary — こまいホーム</div>
+    <div class="stats">
+      <div class="stat-badge">全 <strong id="totalCount">—</strong> 用語</div>
+      <div class="stat-badge">6 カテゴリ</div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <span class="search-icon">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" id="searchInput" placeholder="用語・説明を検索…" autocomplete="off">
+    </div>
+    <div class="filter-label">カテゴリで絞り込む</div>
+    <div class="filter-btns" id="filterBtns">
+      <button class="filter-btn active" data-cat="all">すべて</button>
+      <button class="filter-btn" data-cat="業務">業務</button>
+      <button class="filter-btn" data-cat="法規">法規</button>
+      <button class="filter-btn" data-cat="構造">構造</button>
+      <button class="filter-btn" data-cat="工程">工程</button>
+      <button class="filter-btn" data-cat="仕上げ">仕上げ</button>
+      <button class="filter-btn" data-cat="設備">設備</button>
+    </div>
+  </div>
+
+  <div class="result-count" id="resultCount"></div>
+  <div class="glossary-list" id="glossaryList"></div>
+  <div class="empty-state" id="emptyState">
+    <div class="emoji">🥺</div>
+    <p>該当する用語が見つかりませんでした<br>担当者に追加を依頼してください</p>
+  </div>
+
+  <footer>こまいホーム 新人研修資料 ／ 社内限定</footer>
+</div>
+
+<!-- ════════════ NOTICE MODAL ════════════ -->
+<div class="modal-overlay" id="noticeModal">
+  <div class="modal-box">
+    <div class="notice-icon">🔒</div>
+    <div class="notice-title">ご利用前にお読みください</div>
+    <div class="notice-body">
+      この手引書は<strong>新入社員向けに発行</strong>されていますが、リンクを知っているすべての方が閲覧できる状態です。<br><br>
+      <strong>他の方への共有やSNSへの投稿はお控えください。</strong><br>
+      取り扱いには十分ご注意いただきますようお願いいたします。
+    </div>
+    <button class="notice-btn" onclick="closeModal('noticeModal')">内容を確認しました</button>
+  </div>
+</div>
+
+<!-- ════════════ TERM DETAIL MODAL ════════════ -->
+<div class="modal-overlay" id="termModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('termModal')">✕</button>
+    <div class="term-modal-cats" id="termModalCats"></div>
+    <div class="term-modal-name" id="termModalName"></div>
+    <div class="term-modal-ruby" id="termModalRuby"></div>
+    <div class="term-modal-divider"></div>
+    <div class="term-modal-desc" id="termModalDesc"></div>
+    <div class="term-modal-example" id="termModalExample" style="display:none"></div>
+    <button class="term-modal-back" onclick="closeModal('termModal')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      もとの一覧に戻る
+    </button>
+  </div>
+</div>
+
+<!-- ════════════ ASK MODAL ════════════ -->
+<div class="modal-overlay" id="askModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('askModal')">✕</button>
+    <div class="ask-title">詳しく知りたい</div>
+    <div class="ask-sub">わからない用語や気になることを担当者に送れます。</div>
+
+    <div class="ask-field">
+      <label class="ask-label" for="askName">お名前<span>*</span></label>
+      <input type="text" class="ask-input" id="askName" placeholder="例：山田 太郎">
+    </div>
+    <div class="ask-field">
+      <label class="ask-label" for="askMessage">質問・メッセージ<span>*</span></label>
+      <textarea class="ask-textarea" id="askMessage" placeholder="例：「布基礎」と「土間コン」の違いを教えてください。"></textarea>
+    </div>
+
+    <button class="ask-send-btn" id="askSendBtn" onclick="sendAsk()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      送信する
+    </button>
+    <div class="ask-status" id="askStatus"></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+//  ★ GASのウェブアプリURLをここに入力してください
+// ══════════════════════════════════════════════
+const GAS_URL = 'YOUR_GAS_URL_HERE';
+
+// ══════════════════════════════════════════════
+//  用語データ
+// ══════════════════════════════════════════════
+const terms = [
+  // ── 業務と法規 ───────────────────────────────────────────
+  { name: "資金計画", ruby: "しきんけいかく", cat: "業務", desc: "お客様の話を聞き取り、住宅ローンの返済計画を作成してご提案する。", example: "" },
+  { name: "見積り", ruby: "みつもり", cat: "業務", desc: "工事に必要な費用を算出した書類。数量・単価・材料費・工賃・諸経費等を記載する。<br>", example: "" },
+  { name: "見積折衝", ruby: "みつもりせっしょう", cat: "業務", desc: "見積りの内容をお客様にお伝えし、見積金額を話し合うこと。<br>このときに契約のお約束をいただきたい…！", example: "" },
+  { name: "工事請負契約", ruby: "こうじうけおいけいやく", cat: "業務", desc: "建物を完成させることを約束し、報酬をもらう契約。着工前に必ず締結する。", example: "" },
+  { name: "地鎮祭", ruby: "じちんさい", cat: "業務", desc: "建築工事前に土地の神様に工事の安全と完成をお祈りする儀式のこと。<br>宗教によってはやらない方もいる。<br><br>こまいホームでは、供物の用意を請け負わないことで、お客様にとって余計な経費をかけさせないようにしているよ！", example: "" },
+  { name: "確認申請", ruby: "かくにんしんせい", cat: "業務,法規", desc: "お客様とのご契約後、工事着工前に建築計画が建築基準法等に適合しているか、審査・確認を求める手続き。<br>国の法律（建築基準法）を用いて審査されるが、審査や確認済証の交付は、ほとんどの場合市の建築指導課（行政）で行われているよ！<br><br>お引渡しの前には完了検査を行う。", example: "「確認申請の降りる前に着工はできません」" },
+  { name: "確認申請依頼", ruby: "かくにんしんせいいらい", cat: "業務", desc: "確認申請は、五十嵐設計事務所に依頼しているよ！", example: "" },
+  { name: "建蔽率", ruby: "けんぺいりつ", cat: "法規", desc: "敷地面積に対する建築面積の割合。用途地域ごとに上限が定められている。", example: "" },
+  { name: "容積率", ruby: "ようせきりつ", cat: "法規", desc: "敷地面積に対する延床面積の割合。建蔽率と並んで建物規模を制限する指標。", example: "" },
+  { name: "建築面積", ruby: "けんちくめんせき", cat: "法規", desc: "建物を真上から見たとき、地面に接している部分の面積。", example: "" },
+  { name: "延床面積", ruby: "のべゆかめんせき", cat: "法規", desc: "建物の各階の床面積を全部足した、生活スペースの合計面積。", example: "" },
+  { name: "用途地域", ruby: "ようとちいき", cat: "法規", desc: "その土地にどんな建物を建てていいか（住宅・商店・工場など）を決める「ゾーン分け」のことだよ！<br>住宅ゾーンの中でも「どんな建物か」もゾーン分けされているよ！", example: "" },
+  { name: "長期優良住宅", ruby: "ちょうきゆうりょうじゅうたく", cat: "法規", desc: "耐震・省エネ・劣化対策等の基準を満たし、認定を受けた住宅で、税制優遇や住宅ローン金利優遇が受けられる。<br>ただし、満たした基準は維持していかなくてはいけない場合もあるので、しっかりメリットとデメリットを理解したうえでお選び頂く必要がある。", example: "" },
+  { name: "瑕疵担保責任", ruby: "かしたんぽせきにん", cat: "法規", desc: "建物の欠陥（瑕疵）に対して施工者（こまいホーム）が負う責任。<br>主要構造部・雨水侵入について最大10年間責任義務が法律で定められている。", example: "" },
+  { name: "JIO", ruby: "じお", cat: "法規", desc: "上記の瑕疵担保責任を果たすための保険のこと。<br><br>鉄筋検査／型枠検査／躯体検査／防水検査<br>の計４回の検査を弊社では行う。", example: "" },
+  { name: "本申込", ruby: "ほんもうしこみ", cat: "業務", desc: "建物の請負契約と、土地の売買契約が完了したあと、銀行に住宅ローンの借入を申し込むこと。<br>あらかじめ、各種契約前に事前審査というものをしておく必要がある。", example: "" },
+  { name: "つなぎ融資", ruby: "つなぎゆうし", cat: "業務", desc: "住宅ローンの本融資が実行されるまでの間に必要な費用（土地購入費用など）を、支払うためにつかう短期融資のこと。<br>本融資までの期間の利息のみ支払うことで利用できる。", example: "" },
+  { name: "完了検査", ruby: "かんりょうけんさ", cat: "業務,法規", desc: "確認申請の承認が降りた図面の通り施工されているか、建築完了時に検査を行う。", example: "" },
+  { name: "金消", ruby: "きんしょう", cat: "業務", desc: "金銭消費貸借契約。<br>住宅ローンの融資を受けるための契約のこと。<br>お引渡しの直前に行う。", example: "" },
+  { name: "お引渡し", ruby: "ひきわたし", cat: "業務", desc: "完成した建物を施主に渡す最終工程。鍵・書類（取扱説明書・保証書・竣工図）を含めて引き渡す。", example: "" },
+  { name: "固定資産税減額申告", ruby: "こていしさんぜいげんがくしんこく", cat: "業務", desc: "お引き渡しをしたお客様のお宅に訪問して、固定資産税を減額するための申告書の書き方をお伝えしに行くよ！", example: "" },
+  { name: "不動産取得税還付申請", ruby: "ふどうさんしゅとくぜいかんぷしんせい", cat: "業務", desc: "お引き渡しをしたお客様のお宅に訪問して、一度お支払いしている、『土地を購入した際に支払う不動産取得税』の還付（減額）を受けるための申告書の書き方をお伝えしに行くよ！", example: "" },
+  { name: "点検とアフター", ruby: "てんけんとあふたー", cat: "業務", desc: "営業担当者がお客様からのアフターの窓口になることが多いよ！<br><br>24時間対応のアフターサービスを行っている大手ハウスメーカーや工務店もあるけど、こまいホームではアフターに力をいれるというよりもアフターの少ないお引渡しに力をいれているよ！", example: "" },
+
+  // ── 構造と工程 ──────────────────────────────────────────
+  { name: "地盤調査", ruby: "じばんちょうさ", cat: "工程", desc: "土地のご契約後に行う。<br>建てようとしている家を安全に支えることのできる強度なのか、性質なのかを確認する調査のこと。", example: "" },
+  { name: "地縄張り", ruby: "じなわはり", cat: "工程", desc: "工事前に建物の配置・輪郭を縄で地面に示す作業。", example: "" },
+  { name: "基礎工事", ruby: "きそこうじ", cat: "工程", desc: "根切り〜砕石→防湿シート→捨てコン→配筋→型枠→コンクリート打設→養生→脱型の一連の工程。", example: "「基礎工事は2週間かかる予定です」" },
+  { name: "遣方", ruby: "やりかた", cat: "工程", desc: "建物を建てる前に、基礎の位置・高さ・水平を正確に出すための仮設の木組みのことだよ！" },
+  { name: "根掘り", ruby: "ねぼり", cat: "工程", desc: "基礎を作るために地面を掘る作業だよ！根掘りの深さは建築するエリアによって違うよ！" },
+  { name: "鉄筋組み", ruby: "てっきんぐみ", cat: "構造,工程", desc: "布基礎・土間コンクリートの打設をする前に行うよ！<br>使う鉄筋は『異形鉄筋』だよ！<br>表面がツルツルの「丸鋼（丸鋼鉄筋）」と違い、リブや節によって凹凸が付いていて、コンクリートやモルタルとの「付着性」がとても高くなるよ！"},
+  { name: "布基礎", ruby: "ぬのぎそ", cat: "構造,工程", desc: "建物の基礎の部分の地面から出ている部分のことだよ！" },
+  { name: "土間コン", ruby: "どまこん", cat: "構造,工程", desc: "建物の底面全体をコンクリートで覆う基礎。<br>こまいホームでは、鉄筋をいれた100mmの厚みの土間コンにすることで構造体の一部として扱われるよ！" },
+  { name: "アンカーボルト", cat: "構造", desc: "基礎と土台をつなぐ基礎コンクリートに埋め込むボルト。" },
+  { name: "ホールダウン", cat: "構造", desc: "基礎と柱をつなぐ基礎コンクリートに埋め込むボルト。" },
+  { name: "鋼製束", ruby: "こうせいづか", cat: "構造", desc: "土間コンの上に設置して、床下の木材を支える。", example: "" },
+  { name: "天端均し", ruby: "てんばならし", cat: "工程", desc: "布基礎の表面を平らに均す工程のこと。", example: "" },
+  { name: "土台", ruby: "どだい", cat: "構造,工程", desc: "基礎の上に水平に敷かれる木材。柱や床組みを受ける最下部の横架材。", example: "「土間コンの打設・天端均しも終わったので、◯日に土台敷きの予定です！」" },
+  { name: "通し柱", ruby: "とおしばしら", cat: "構造,工程", desc: "1階から2階まで継ぎ目なく通っている柱。", example: "「この角は通し柱なので位置を変えられません」" },
+  { name: "梁", ruby: "はり", cat: "構造,工程", desc: "柱と柱に架ける木材のことだよ！<br>こまいホームではダフリカという木を使用しているよ！" },
+
+  // ── 仕上げ ─────────────────────────────────────────
+  { name: "サッシ", cat: "仕上げ", desc: "窓のことだよ！", example: "「弊社でつかうサッシはトリプルガラスが標準仕様です。」" },
+  { name: "フローリング", cat: "仕上げ", desc: "床のことだよ！<br>シート、突板、無垢など様々な種類があるよ！" },
+  { name: "クロス", cat: "仕上げ", desc: "壁・天井に貼る壁紙のことだよ！" },
+  { name: "巾木", ruby: "はばき", cat: "仕上げ", desc: "壁と床の接合部に取り付ける細長い木材または樹脂製の部材のことだよ！", example: "「巾木の色はフローリングに合わせてダーク系で」" },
+  { name: "断熱材", ruby: "だんねつざい", cat: "仕上げ", desc: "建物内外の熱の移動を遅らせるため、室内の温度を一定に保つために使うよ！<br>基礎部分には布基礎の外側に50mm、内側に50mm×2で150mmのスタイロフォームを使用。<br>木造部分には、柱の外側に30～50mmのネオマフォーム、内側には105mmのグラスウールを使用。", example: "「壁内部の断熱材は105mmのグラスウール充填仕様です」" },
+  { name: "スタイロフォーム", cat: "仕上げ", desc: "b-Ⅲ（B類3種）というスタイロフォームを使っているよ！", example: "" },
+  { name: "ネオマフォーム", cat: "仕上げ", desc: "旭化成製の優れた断熱材。スペースシャトルや自動販売機などに使われているよ！", example: "旭川でネオマフォームをはじめてつかったのは弊社です！" },
+  { name: "通気層・胴縁", ruby: "つうきそう・どうぶち", cat: "仕上げ", desc: "外壁材の内側に空気層を設け、湿気・結露を防いでいる。現在の標準的な施工方法。", example: "「外壁を横に貼るとき、胴縁は縦につけます。」" },
+
+  // ── 設備 ───────────────────────────────────────────
+  { name: "換気", ruby: "かんき", cat: "設備", desc: "建物内の空気を入れ替える設備。<br>大きく、三種換気と一種換気に分かれる。", example: "「換気の系統図を現場で確認しておいて」" },
+  { name: "三種換気", ruby: "さんしゅかんき", cat: "設備", desc: "給気は自然給気、排気だけを機械で強制排出する仕組みのことだよ！<br><br>設置費用や維持費などコストも低い点はメリット！", example: "" },
+  { name: "一種換気", ruby: "いっしゅかんき", cat: "設備", desc: "給気も排気も機械で行う仕組みのことだよ！<br>換気量を一定に保ちやすく、外気の温度や風の影響を受けにくくて、熱交換器付き機器なら、冬の冷たい空気や夏の暑い外気の温度を室内に近づけて給気できるものもあるよ！<br><br>設置費用も維持費も三種と比べて高くなる点には注意が必要。", example: "" },
+];
+
+// ══════════════════════════════════════════════
+//  正規化
+// ══════════════════════════════════════════════
+terms.forEach(t => {
+  t.cats = typeof t.cat === 'string'
+    ? t.cat.split(',').map(s => s.trim())
+    : (t.cat || []);
+  t.primaryCat = t.cats[0] || '';
+});
+
+// ══════════════════════════════════════════════
+//  モーダル制御
+// ══════════════════════════════════════════════
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// オーバーレイ外クリックで閉じる
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal(overlay.id);
+  });
+});
+
+// ESCキー
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+  }
+});
+
+// ══════════════════════════════════════════════
+//  用語詳細モーダル
+// ══════════════════════════════════════════════
+function openTermModal(name) {
+  const t = terms.find(x => x.name === name);
+  if (!t) return;
+
+  document.getElementById('termModalCats').innerHTML =
+    t.cats.map(c => `<span class="cat-badge cat-${c}">${c}</span>`).join('');
+  document.getElementById('termModalName').textContent = t.name;
+  document.getElementById('termModalRuby').textContent = t.ruby ? `よみ：${t.ruby}` : '';
+
+  const descEl = document.getElementById('termModalDesc');
+  descEl.innerHTML = linkifyDesc(t.desc, terms, t.name);
+  // モーダル内リンクにもイベント付与
+  descEl.querySelectorAll('.term-link').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      closeModal('termModal');
+      setTimeout(() => openTermModal(el.dataset.jump), 150);
+    });
+  });
+
+  const exEl = document.getElementById('termModalExample');
+  if (t.example) {
+    exEl.style.display = '';
+    exEl.textContent = t.example;
+  } else {
+    exEl.style.display = 'none';
+  }
+
+  openModal('termModal');
+}
+
+// ══════════════════════════════════════════════
+//  リンク化
+// ══════════════════════════════════════════════
+function linkifyDesc(text, allTerms, selfName) {
+  const sorted = allTerms
+    .map(t => t.name)
+    .filter(n => n !== selfName)
+    .sort((a, b) => b.length - a.length);
+
+  let result = text;
+  const ph = {};
+  let idx = 0;
+
+  sorted.forEach(name => {
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    result = result.replace(new RegExp(escaped, 'g'), match => {
+      const key = `\x00${idx++}\x00`;
+      ph[key] = `<span class="term-link" data-jump="${name}">${match}</span>`;
+      return key;
+    });
+  });
+
+  Object.entries(ph).forEach(([k, v]) => { result = result.replace(k, v); });
+  return result;
+}
+
+// ══════════════════════════════════════════════
+//  検索・フィルター・描画
+// ══════════════════════════════════════════════
+const totalCount  = document.getElementById('totalCount');
+const glossaryList = document.getElementById('glossaryList');
+const emptyState  = document.getElementById('emptyState');
+const resultCount = document.getElementById('resultCount');
+const searchInput = document.getElementById('searchInput');
+const filterBtns  = document.querySelectorAll('.filter-btn');
+
+totalCount.textContent = terms.length;
+let currentCat = 'all';
+let currentQuery = '';
+
+function render() {
+  const query = currentQuery.trim().toLowerCase();
+  const filtered = terms.filter(t => {
+    const catMatch = currentCat === 'all' || t.cats.includes(currentCat);
+    const textMatch = !query ||
+      t.name.includes(query) ||
+      (t.ruby && t.ruby.includes(query)) ||
+      (t.desc && t.desc.toLowerCase().includes(query)) ||
+      (t.example && t.example.toLowerCase().includes(query));
+    return catMatch && textMatch;
+  });
+
+  glossaryList.innerHTML = '';
+
+  if (filtered.length === 0) {
+    emptyState.style.display = 'block';
+    resultCount.innerHTML = '';
+    return;
+  }
+
+  emptyState.style.display = 'none';
+  resultCount.innerHTML = `<strong>${filtered.length}</strong> 件の用語`;
+
+  filtered.forEach(t => {
+    const card = document.createElement('div');
+    card.className = `term-card cat-${t.primaryCat}`;
+    card.dataset.termName = t.name;
+
+    const badges = t.cats.map(c => `<span class="cat-badge cat-${c}">${c}</span>`).join('');
+    const linkedDesc = linkifyDesc(t.desc || '', terms, t.name);
+
+    card.innerHTML = `
+      <div class="term-header">
+        <div class="term-name">
+          ${t.name}
+          ${t.ruby ? `<span class="term-ruby">${t.ruby}</span>` : ''}
+        </div>
+        <div class="badges-wrap">${badges}</div>
+      </div>
+      <div class="term-body">
+        ${linkedDesc}
+        ${t.example ? `<div class="term-example">${t.example}</div>` : ''}
+      </div>`;
+
+    glossaryList.appendChild(card);
+  });
+
+  // 用語リンク：モーダルで開く
+  glossaryList.querySelectorAll('.term-link').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      openTermModal(el.dataset.jump);
+    });
+  });
+}
+
+searchInput.addEventListener('input', e => { currentQuery = e.target.value; render(); });
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentCat = btn.dataset.cat;
+    render();
+  });
+});
+
+render();
+
+// ══════════════════════════════════════════════
+//  GAS送信
+// ══════════════════════════════════════════════
+async function sendAsk() {
+  const name    = document.getElementById('askName').value.trim();
+  const message = document.getElementById('askMessage').value.trim();
+  const statusEl = document.getElementById('askStatus');
+  const btn = document.getElementById('askSendBtn');
+
+  statusEl.style.display = 'none';
+  statusEl.className = 'ask-status';
+
+  if (!name || !message) {
+    statusEl.style.display = 'block';
+    statusEl.className = 'ask-status error';
+    statusEl.textContent = 'お名前とメッセージを入力してください。';
+    return;
+  }
+
+  if (GAS_URL === 'YOUR_GAS_URL_HERE') {
+    statusEl.style.display = 'block';
+    statusEl.className = 'ask-status error';
+    statusEl.textContent = '※ GAS URLが未設定です（管理者にご連絡ください）';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 0.8s linear infinite"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.08-8"/></svg> 送信中…`;
+
+  try {
+    const params = new URLSearchParams({ name, message, timestamp: new Date().toLocaleString('ja-JP') });
+    await fetch(GAS_URL, { method: 'POST', body: params, mode: 'no-cors' });
+
+    statusEl.style.display = 'block';
+    statusEl.textContent = '✅ 送信しました！担当者からご連絡をお待ちください。';
+    document.getElementById('askName').value = '';
+    document.getElementById('askMessage').value = '';
+  } catch {
+    statusEl.style.display = 'block';
+    statusEl.className = 'ask-status error';
+    statusEl.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> 送信する`;
+  }
+}
+
+// スピンアニメ
+const spinStyle = document.createElement('style');
+spinStyle.textContent = '@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }';
+document.head.appendChild(spinStyle);
+
+// ══════════════════════════════════════════════
+//  初回モーダル（ページ読み込み時）
+// ══════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => openModal('noticeModal'), 300);
+});
+</script>
+</body>
+</html>
