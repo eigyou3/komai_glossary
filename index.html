@@ -756,6 +756,164 @@ footer {
 .ask-status.error { color: #c0392b; }
 
 /* ═══════════════════════════════════════
+   TERM IMAGE THUMBNAIL
+═══════════════════════════════════════ */
+.term-img-wrap { margin-top: 14px; }
+
+.term-thumb {
+  width: 88px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+  display: block;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  background: var(--paper-dark);
+}
+.term-thumb:hover {
+  transform: scale(1.06);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-light);
+}
+.term-thumb-label {
+  font-size: 11px;
+  color: var(--accent-light);
+  margin-top: 5px;
+  letter-spacing: 0.08em;
+}
+
+.term-modal-img-wrap { margin-bottom: 18px; }
+.term-modal-thumb {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  background: var(--paper-dark);
+}
+.term-modal-thumb:hover { transform: scale(1.04); box-shadow: var(--shadow-md); }
+
+/* 動画サムネイル */
+.term-video-wrap { margin-top: 14px; }
+
+.term-video-thumb {
+  position: relative;
+  width: 88px;
+  height: 66px;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  overflow: hidden;
+  cursor: pointer;
+  background: #1a1208;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+  display: inline-block;
+}
+.term-video-thumb:hover {
+  transform: scale(1.06);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-light);
+}
+.term-video-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.term-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.32);
+  transition: background 0.15s;
+}
+.term-video-thumb:hover .term-video-play { background: rgba(0,0,0,0.18); }
+.term-video-play svg { filter: drop-shadow(0 1px 4px rgba(0,0,0,0.5)); }
+
+/* lightbox内動画 */
+.lightbox-video {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 100px);
+  width: min(92vw, 860px);
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  background: #000;
+  outline: none;
+}
+
+/* ═══════════════════════════════════════
+   IMAGE LIGHTBOX MODAL
+═══════════════════════════════════════ */
+#imgModal {
+  z-index: 2000;
+  padding: 16px;
+  background: rgba(10,5,2,0.88);
+}
+#imgModal .modal-box {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  max-width: min(92vw, 900px);
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transform: none;
+  opacity: 1;
+  transition: none;
+}
+@keyframes img-modal-in {
+  0%   { opacity: 0; transform: scale(0.72) rotate(-7deg); }
+  65%  { opacity: 1; transform: scale(1.03) rotate(1.5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+#imgModal.open .modal-box {
+  animation: img-modal-in 0.4s cubic-bezier(0.34,1.2,0.64,1) forwards;
+}
+.lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 100px);
+  width: auto;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  object-fit: contain;
+}
+.lightbox-caption {
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+.lightbox-close {
+  position: fixed;
+  top: 16px; right: 16px;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  backdrop-filter: blur(4px);
+  z-index: 2001;
+  line-height: 1;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+/* ═══════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════ */
 @media (max-width: 600px) {
@@ -856,6 +1014,16 @@ footer {
   </div>
 </div>
 
+
+<!-- ════════════ IMAGE LIGHTBOX ════════════ -->
+<div class="modal-overlay" id="imgModal">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <div class="modal-box">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="" style="display:none">
+    <video class="lightbox-video" id="lightboxVideo" controls playsinline style="display:none"></video>
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+</div>
 <!-- ════════════ ASK MODAL ════════════ -->
 <div class="modal-overlay" id="askModal">
   <div class="modal-box">
@@ -882,7 +1050,7 @@ footer {
 
 <script>
 // ══════════════════════════════════════════════
-//  ★ GASのウェブアプリURLをここに入力してください
+// GAS URL
 // ══════════════════════════════════════════════
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyFqUa7RfZJ4BhXWfs5SrnHchtCnYzjsDM01FJE8DVfaPhf-sTnhZlQ4kGi-fPAmfshhw/exec';
 
@@ -905,9 +1073,9 @@ const terms = [
   { name: "用途地域", ruby: "ようとちいき", cat: "法規", desc: "その土地にどんな建物を建てていいか（住宅・商店・工場など）を決める「ゾーン分け」のことだよ！<br>住宅ゾーンの中でも「どんな建物か」もゾーン分けされているよ！", example: "" },
   { name: "長期優良住宅", ruby: "ちょうきゆうりょうじゅうたく", cat: "法規", desc: "耐震・省エネ・劣化対策等の基準を満たし、認定を受けた住宅で、税制優遇や住宅ローン金利優遇が受けられる。<br>ただし、満たした基準は維持していかなくてはいけない場合もあるので、しっかりメリットとデメリットを理解したうえでお選び頂く必要がある。", example: "" },
   { name: "瑕疵担保責任", ruby: "かしたんぽせきにん", cat: "法規", desc: "建物の欠陥（瑕疵）に対して施工者（こまいホーム）が負う責任。<br>主要構造部・雨水侵入について最大10年間責任義務が法律で定められている。", example: "" },
-  { name: "JIO", ruby: "じお", cat: "法規", desc: "上記の瑕疵担保責任を果たすための保険のこと。<br><br>鉄筋検査／型枠検査／躯体検査／防水検査<br>の計４回の検査を弊社では行う。", example: "" },
+  { name: "JIO", ruby: "じお", cat: "法規", video: "kanamonokensa.mp4", desc: "上記の瑕疵担保責任を果たすための保険のこと。<br><br>鉄筋検査／型枠検査／金物検査（動画有り）／防水検査<br>の計４回の検査を弊社では行う。", example: "" },
   { name: "本申込", ruby: "ほんもうしこみ", cat: "業務", desc: "建物の請負契約と、土地の売買契約が完了したあと、銀行に住宅ローンの借入を申し込むこと。<br>あらかじめ、各種契約前に事前審査というものをしておく必要がある。", example: "" },
-  { name: "つなぎ融資", ruby: "つなぎゆうし", cat: "業務", desc: "住宅ローンの本融資が実行されるまでの間に必要な費用（土地購入費用など）を、支払うためにつかう短期融資のこと。<br>本融資までの期間の利息のみ支払うことで利用できる。", example: "" },
+  { name: "つなぎ融資", ruby: "つなぎゆうし", cat: "業務", desc: "住宅ローンの本融資が実行されるまでの間に必要な費用（土地購入費用など）を、支払うためにつかう短期融資のこと。<br>本融資までの期間の利息のみ支払うことで利用できる。<br><br>印鑑登録証明書と印紙代の10,200円が必要。", example: "" },
   { name: "完了検査", ruby: "かんりょうけんさ", cat: "業務,法規", desc: "確認申請の承認が降りた図面の通り施工されているか、建築完了時に検査を行う。", example: "" },
   { name: "金消", ruby: "きんしょう", cat: "業務", desc: "金銭消費貸借契約。<br>住宅ローンの融資を受けるための契約のこと。<br>お引渡しの直前に行う。", example: "" },
   { name: "お引渡し", ruby: "ひきわたし", cat: "業務", desc: "完成した建物を施主に渡す最終工程。鍵・書類（取扱説明書・保証書・竣工図）を含めて引き渡す。", example: "" },
@@ -916,21 +1084,27 @@ const terms = [
   { name: "点検とアフター", ruby: "てんけんとあふたー", cat: "業務", desc: "営業担当者がお客様からのアフターの窓口になることが多いよ！<br><br>24時間対応のアフターサービスを行っている大手ハウスメーカーや工務店もあるけど、こまいホームではアフターに力をいれるというよりもアフターの少ないお引渡しに力をいれているよ！", example: "" },
 
   // ── 構造と工程 ──────────────────────────────────────────
-  { name: "地盤調査", ruby: "じばんちょうさ", cat: "工程", desc: "土地のご契約後に行う。<br>建てようとしている家を安全に支えることのできる強度なのか、性質なのかを確認する調査のこと。", example: "" },
+  { name: "地盤調査", ruby: "じばんちょうさ", cat: "工程", video: "jibanchousa.mp4", desc: "土地のご契約後に行う。<br>建てようとしている家を安全に支えることのできる強度なのか、性質なのかを確認する調査のこと。", example: "" },
   { name: "地縄張り", ruby: "じなわはり", cat: "工程", desc: "工事前に建物の配置・輪郭を縄で地面に示す作業。", example: "" },
   { name: "基礎工事", ruby: "きそこうじ", cat: "工程", desc: "根切り〜砕石→防湿シート→捨てコン→配筋→型枠→コンクリート打設→養生→脱型の一連の工程。", example: "「基礎工事は2週間かかる予定です」" },
   { name: "遣方", ruby: "やりかた", cat: "工程", desc: "建物を建てる前に、基礎の位置・高さ・水平を正確に出すための仮設の木組みのことだよ！" },
   { name: "根掘り", ruby: "ねぼり", cat: "工程", desc: "基礎を作るために地面を掘る作業だよ！根掘りの深さは建築するエリアによって違うよ！" },
   { name: "鉄筋組み", ruby: "てっきんぐみ", cat: "構造,工程", desc: "布基礎・土間コンクリートの打設をする前に行うよ！<br>使う鉄筋は『異形鉄筋』だよ！<br>表面がツルツルの「丸鋼（丸鋼鉄筋）」と違い、リブや節によって凹凸が付いていて、コンクリートやモルタルとの「付着性」がとても高くなるよ！"},
-  { name: "布基礎", ruby: "ぬのぎそ", cat: "構造,工程", desc: "建物の基礎の部分の地面から出ている部分のことだよ！" },
-  { name: "土間コン", ruby: "どまこん", cat: "構造,工程", desc: "建物の底面全体をコンクリートで覆う基礎。<br>こまいホームでは、鉄筋をいれた100mmの厚みの土間コンにすることで構造体の一部として扱われるよ！" },
-  { name: "アンカーボルト", cat: "構造", desc: "基礎と土台をつなぐ基礎コンクリートに埋め込むボルト。" },
-  { name: "ホールダウン", cat: "構造", desc: "基礎と柱をつなぐ基礎コンクリートに埋め込むボルト。" },
-  { name: "鋼製束", ruby: "こうせいづか", cat: "構造", desc: "土間コンの上に設置して、床下の木材を支える。", example: "" },
-  { name: "天端均し", ruby: "てんばならし", cat: "工程", desc: "布基礎の表面を平らに均す工程のこと。", example: "" },
-  { name: "土台", ruby: "どだい", cat: "構造,工程", desc: "基礎の上に水平に敷かれる木材。柱や床組みを受ける最下部の横架材。", example: "「土間コンの打設・天端均しも終わったので、◯日に土台敷きの予定です！」" },
-  { name: "通し柱", ruby: "とおしばしら", cat: "構造,工程", desc: "1階から2階まで継ぎ目なく通っている柱。", example: "「この角は通し柱なので位置を変えられません」" },
+  { name: "布基礎", ruby: "ぬのぎそ", cat: "構造,工程", img: "nunogiso.jpg", desc: "建物の基礎の部分の地面から出ている部分のことだよ！" },
+  { name: "土間コン", ruby: "どまこん", cat: "構造,工程", video: "domakon.mp4", desc: "建物の底面全体をコンクリートで覆う基礎。<br>こまいホームでは、鉄筋をいれた100mmの厚みの土間コンにすることで構造体の一部として扱われるよ！" },
+  { name: "アンカーボルト", cat: "構造", img: "ankerbolt.jpg", desc: "基礎と土台をつなぐ基礎コンクリートに埋め込むボルト。" },
+  { name: "ホールダウン", cat: "構造", img: "holedown.jpg", desc: "基礎と柱をつなぐ基礎コンクリートに埋め込むボルト。<br>主に出隅と通し柱に使う。" },
+  { name: "出隅", ruby: "ですみ⇔いりずみ", cat: "構造", img: "desumi-irizumi.jpg", desc: "外側の角のこと。<br>内側の角を「入隅（いりずみ）」という。", example: "クロスは出隅で張り替えることは基本的にしません。" },
+  { name: "鋼製束", ruby: "こうせいづか", cat: "構造", img: "kouseiduka.jpg", desc: "土間コンの上に設置して、床下の木材を支える。", example: "" },
+  { name: "天端均し", ruby: "てんばならし", cat: "工程", video: "tenbanarashi.mp4", desc: "布基礎の表面を平らに均す工程のこと。", example: "" },
+  { name: "土台敷き", ruby: "どだいしき", cat: "構造,工程", img: "dodaishiki.jpg", desc: "基礎の上に水平に敷かれる木材を土台といい、その工程のこと。<br>関連：大引", example: "「土間コンの打設・天端均しも終わったので、◯日に土台敷きの予定です！」" },
+  { name: "大引", ruby: "おおびき", cat: "構造", desc: "土台と土台をつなぐ木材のこと", example: "" },
+  { name: "通し柱", ruby: "とおしばしら", cat: "構造,工程", desc: "1階から2階まで継ぎ目なく通っている柱。<br>ホールダウン金物を使う。", example: "「この角は通し柱なので位置を変えられません」" },
   { name: "梁", ruby: "はり", cat: "構造,工程", desc: "柱と柱に架ける木材のことだよ！<br>こまいホームではダフリカという木を使用しているよ！" },
+  { name: "建方", ruby: "たてかた", cat: "構造,工程", video: "tatekata.mp4", desc: "柱や梁を立てて、建物の形を一気に作る工程。<br>土台・柱・梁・屋根の骨組み（家のフレーム）を形成する。", example: "" },
+  { name: "火打ち", ruby: "ひうち", cat: "構造", img: "hiuchi.jpg", desc: "家の角を補強する金物", example: "" },
+  { name: "羽子板", ruby: "はごいた", cat: "構造", img: "hagoita.jpg", desc: "梁と柱をしっかりと引き寄せてつなぐ金物。<br>羽子板のような形をしているからこの名前がついているよ！", example: "" },
+  { name: "クレテック", ruby: "", cat: "構造", img: "kuretec.jpg", desc: "木のつなぎ目を金物とボルトでガッチリ固定する。" },
 
   // ── 仕上げ ─────────────────────────────────────────
   { name: "サッシ", cat: "仕上げ", desc: "窓のことだよ！", example: "「弊社でつかうサッシはトリプルガラスが標準仕様です。」" },
@@ -997,6 +1171,38 @@ function openTermModal(name) {
   document.getElementById('termModalName').textContent = t.name;
   document.getElementById('termModalRuby').textContent = t.ruby ? `よみ：${t.ruby}` : '';
 
+  // 画像（モーダル内サムネイル）
+  let imgWrap = document.getElementById('termModalImgWrap');
+  if (!imgWrap) {
+    imgWrap = document.createElement('div');
+    imgWrap.id = 'termModalImgWrap';
+    imgWrap.className = 'term-modal-img-wrap';
+    const divider = document.getElementById('termModalDivider') || document.querySelector('.term-modal-divider');
+    divider.parentNode.insertBefore(imgWrap, divider);
+  }
+  if (t.img) {
+    imgWrap.innerHTML = `<img class="term-modal-thumb" src="images/${t.img}" alt="${t.name}" data-img="${t.img}" data-name="${t.name}">
+      <div class="term-thumb-label" style="margin-top:5px">🔍 タップで拡大</div>`;
+    imgWrap.style.display = '';
+    imgWrap.querySelector('.term-modal-thumb').addEventListener('click', () => {
+      openLightbox(t.img, t.name);
+    });
+  } else if (t.video) {
+    imgWrap.innerHTML = `<div class="term-video-thumb" data-video="${t.video}" data-name="${t.name}" style="width:100px;height:75px">
+      <video src="images/${t.video}" muted preload="metadata" tabindex="-1"></video>
+      <div class="term-video-play">
+        <svg width="28" height="28" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.45)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>
+      </div>
+    </div>
+    <div class="term-thumb-label" style="margin-top:5px">▶ タップで再生</div>`;
+    imgWrap.style.display = '';
+    imgWrap.querySelector('.term-video-thumb').addEventListener('click', () => {
+      openVideoLightbox(t.video, t.name);
+    });
+  } else {
+    imgWrap.style.display = 'none';
+  }
+
   const descEl = document.getElementById('termModalDesc');
   descEl.innerHTML = linkifyDesc(t.desc, terms, t.name);
   // モーダル内リンクにもイベント付与
@@ -1017,6 +1223,37 @@ function openTermModal(name) {
   }
 
   openModal('termModal');
+}
+
+// ══════════════════════════════════════════════
+//  画像・動画 lightbox
+// ══════════════════════════════════════════════
+function openLightbox(imgFile, caption) {
+  const img = document.getElementById('lightboxImg');
+  const vid = document.getElementById('lightboxVideo');
+  vid.pause(); vid.src = ''; vid.style.display = 'none';
+  img.src = `images/${imgFile}`;
+  img.alt = caption || '';
+  img.style.display = '';
+  document.getElementById('lightboxCaption').textContent = caption || '';
+  openModal('imgModal');
+}
+
+function openVideoLightbox(videoFile, caption) {
+  const img = document.getElementById('lightboxImg');
+  const vid = document.getElementById('lightboxVideo');
+  img.src = ''; img.style.display = 'none';
+  vid.src = `images/${videoFile}`;
+  vid.style.display = '';
+  document.getElementById('lightboxCaption').textContent = caption || '';
+  openModal('imgModal');
+  setTimeout(() => vid.play(), 350); // モーダルが開いてから再生
+}
+
+function closeLightbox() {
+  const vid = document.getElementById('lightboxVideo');
+  vid.pause(); vid.src = '';
+  closeModal('imgModal');
 }
 
 // ══════════════════════════════════════════════
@@ -1101,6 +1338,19 @@ function render() {
       <div class="term-body">
         ${linkedDesc}
         ${t.example ? `<div class="term-example">${t.example}</div>` : ''}
+        ${t.img ? `<div class="term-img-wrap">
+          <img class="term-thumb" src="images/${t.img}" alt="${t.name}" loading="lazy" data-img="${t.img}" data-name="${t.name}">
+          <div class="term-thumb-label">🔍 タップで拡大</div>
+        </div>` : ''}
+        ${t.video ? `<div class="term-video-wrap">
+          <div class="term-video-thumb" data-video="${t.video}" data-name="${t.name}">
+            <video src="images/${t.video}" muted preload="metadata" tabindex="-1"></video>
+            <div class="term-video-play">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="white" opacity="0.95"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,0.45)"/><polygon points="10,8 17,12 10,16" fill="white"/></svg>
+            </div>
+          </div>
+          <div class="term-thumb-label">▶ タップで再生</div>
+        </div>` : ''}
       </div>`;
 
     glossaryList.appendChild(card);
@@ -1111,6 +1361,22 @@ function render() {
     el.addEventListener('click', e => {
       e.stopPropagation();
       openTermModal(el.dataset.jump);
+    });
+  });
+
+  // サムネイル：lightboxで開く
+  glossaryList.querySelectorAll('.term-thumb').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      openLightbox(el.dataset.img, el.dataset.name);
+    });
+  });
+
+  // 動画サムネイル：lightboxで再生
+  glossaryList.querySelectorAll('.term-video-thumb').forEach(el => {
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      openVideoLightbox(el.dataset.video, el.dataset.name);
     });
   });
 }
